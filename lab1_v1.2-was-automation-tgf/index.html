@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Hand-on Lab - IBM WebSphere Automation</title>
+  <title>Lab1 v1.2 was automation tgf - IBM WebSphere Automation</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Hand-on Lab";
+    var mkdocs_page_name = "Lab1 v1.2 was automation tgf";
     var mkdocs_page_input_path = "lab1_v1.2-was-automation-tgf.md";
     var mkdocs_page_url = null;
   </script>
@@ -59,74 +59,9 @@
     <a class="" href="../intro/">Getting Started with IBM WebSphere Automation</a>
 	    </li>
           
-            <li class="toctree-l1 current">
+            <li class="toctree-l1">
 		
-    <a class="current" href="./">Hand-on Lab</a>
-    <ul class="subnav">
-            
-    <li class="toctree-l2"><a href="#introduction-to-websphere-automation">Introduction to WebSphere Automation</a></li>
-    
-
-    <li class="toctree-l2"><a href="#business-context">Business Context</a></li>
-    
-
-    <li class="toctree-l2"><a href="#accessing-and-starting-the-environment">Accessing and starting the environment</a></li>
-    
-
-    <li class="toctree-l2"><a href="#receiving-vulnerability-notifications">Receiving vulnerability notifications</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#accessing-the-websphere-automation-ui">Accessing the WebSphere Automation UI</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#getting-configuration-parameters">Getting configuration parameters</a></li>
-    
-
-    <li class="toctree-l2"><a href="#configuring-liberty-server-v200012">Configuring Liberty Server v20.0.0.12</a></li>
-    
-
-    <li class="toctree-l2"><a href="#configuring-liberty-server-v20009">Configuring Liberty Server v20.0.0.9</a></li>
-    
-
-    <li class="toctree-l2"><a href="#configuring-traditional-weebsphere-twas-v9056">Configuring traditional WeebSphere (tWAS) v9.0.5.6</a></li>
-    
-
-    <li class="toctree-l2"><a href="#configuring-traditional-websphere-twas-v9057">Configuring traditional WebSphere (tWAS) v9.0.5.7</a></li>
-    
-
-    <li class="toctree-l2"><a href="#update-liberty-server-v20009-to-fix-the-vulnerability">Update Liberty server v20.0.0.9 to fix the vulnerability</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#updating-configurations">Updating configurations</a></li>
-        
-            <li><a class="toctree-l3" href="#resolve-the-issue-by-applying-an-ifix">Resolve the issue By Applying an IFIX</a></li>
-        
-        </ul>
-    
-
-    <li class="toctree-l2"><a href="#update-twas-server-v9057-to-fix-the-vulnerability">Update tWAS server v9.0.5.7 to fix the vulnerability</a></li>
-    
-
-    <li class="toctree-l2"><a href="#update-twas-server-v9057-to-introduce-the-vulnerability-back-optional">Update tWAS server v9.0.5.7 to introduce the vulnerability back (optional)</a></li>
-    
-
-    <li class="toctree-l2"><a href="#summary">Summary</a></li>
-    
-
-    <li class="toctree-l2"><a href="#appendix-1-reserve-an-environment-for-the-lab">Appendix 1: Reserve an environment for the lab</a></li>
-    
-        <ul>
-        
-            <li><a class="toctree-l3" href="#the-lab-environment">The lab environment</a></li>
-        
-        </ul>
-    
-
-    </ul>
+    <a class="" href="../lab1_v1.3-was-automation-tgf/">Hand-on Lab</a>
 	    </li>
           
         </ul>
@@ -151,7 +86,7 @@
     
       
     
-    <li>Hand-on Lab</li>
+    <li>Lab1 v1.2 was automation tgf</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -242,8 +177,22 @@ amongst the broader team.</p>
 <p>Otherwise, you will need to reserve an environment for the lab. You can obtain one here. Follow the on-screen instructions for “<strong>Reserve now</strong>” option.</p>
 <p><a href="https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575">https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575</a></p>
 <table>
+<thead>
+<tr>
+<th></th>
+<th align="left"></th>
+</tr>
+</thead>
 <tbody>
-<tr class="odd">
+<tr>
+<td><img alt="" src="/lab1-media/media/image4.png?cropResize=50,50" /></td>
+<td align="left"><strong>TIP:</strong> <br> If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr  class="odd">
 <td><img src="./lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
 <td><p><strong>TIP:</strong></p>
 <p>If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.</p></td>
@@ -256,13 +205,15 @@ amongst the broader team.</p>
 <p>When the demo environment is provisioned, use the provided username and password to access and start the environment. You should see the following screen:</p>
 <p><img alt="" src="../lab1-media/media/image5.png" /></p>
 <p>WebSphere Automation is pre-installed in the OCP cluster hosted on the VMs.</p>
+<p><br></p>
 </li>
 <li>
 <p>If the environment is <strong>NOT</strong> already started, go ahead, and <strong>Start</strong> the environment by clicking on the <strong>Play</strong> button. It takes about 10-15 minutes for the environment to start and stabilize.</p>
 <p><img alt="" src="../lab1-media/media/image6.png" /></p>
+<p><br> </p>
 </li>
 <li>
-<p>You will be working on the <strong>STUDENT</strong> VM only.</p>
+<p>You will be working on the <strong>STUDENT</strong> VM only. </p>
 <p>All the WebSphere <strong>images</strong> and <strong>iFixes</strong> required for the lab are pre-installed:</p>
 <ul>
 <li>
@@ -278,14 +229,12 @@ amongst the broader team.</p>
 <p>/opt/IBM/WebSphere/AppServer9056/</p>
 </li>
 </ul>
+<p><br></p>
 </li>
-</ol>
-<!-- end list -->
-
-<ol>
 <li>
 <p>Click the screen representing the <strong>STUDENT</strong> VM</p>
 <p><img alt="student vm" src="../lab1-media/media/image7.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Once you log in to the Student VM you will see the Desktop, which     contains all the programs that you will be using (browsers, terminal, etc.)</p>
@@ -298,7 +247,9 @@ amongst the broader team.</p>
 <p>Password: <strong>engageibm!</strong></p>
 </li>
 </ul>
+<p><br></p>
 <p><img alt="student vm screen" src="../lab1-media/media/image8.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>You can resize the virtual desktop with the <strong>Fit to window</strong> button, located at the top of the Skytap environment window.</p>
@@ -316,35 +267,42 @@ amongst the broader team.</p>
     (there is a WebSphere Automation link on bookmark toolbar):</p>
 <p><a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://cpd-websphere-automation.apps.ocp.ibm.edu</span></a></p>
 <p><img alt="opening browser" src="../lab1-media/media/image10.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>On the login page, select the <strong>OpenShift authentication</strong> as the    authentication type.</p>
 <p><img alt="openshift authentication" src="../lab1-media/media/image11.png" /></p>
 <p><strong>Note:</strong> If necessary, accept all the warnings and certificates.  Depending on your browser, you might have to scroll down to permit
  access.</p>
+<p><br></p>
 </li>
 <li>
 <p>Enter <strong>ocadmin</strong> as username and <strong>ibmocp46</strong> as password. And click <strong>Log In</strong>.</p>
 <p><img alt="ocp ui login" src="../lab1-media/media/image12.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>The <strong><em>IBM Automation Welcome page</em></strong> appears.</p>
 <p><img alt="welcome page" src="../lab1-media/media/image13.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>On the Welcome page, open the <strong>Menu</strong>, click <strong>Operate</strong>, and
     then click <strong>Application runtimes</strong>.</p>
 <p>Application Runtimes represent the Traditional WebSphere and WebSphere Liberty servers that have been registered with IBM Automation.</p>
 <p><img alt="welcome menu" src="../lab1-media/media/image14.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>The Application runtimes page appears. There should be no data since no webSphere servers are registered/configured yet.</p>
 <p><img alt="app runtime" src="../lab1-media/media/image15.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Before you start to register servers to the Dashboard, you need to configure an email to received notifications abouts CVEs.</p>
 <p>a.  Open the <strong>Notification configuration</strong> tab.</p>
 <p><img alt="notification config" src="../lab1-media/media/image16.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>The Email server configuration is pre-configured for this lab. You only need to add your personal email to receive notifications of new security vulnerabilities.</p>
@@ -374,6 +332,7 @@ amongst the broader team.</p>
 <li>
 <p>Return to the desktop and open a new <strong>terminal</strong> window.</p>
 <p><img alt="open terminal" src="../lab1-media/media/image18.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Log in as <strong>root</strong> user</p>
@@ -388,6 +347,7 @@ amongst the broader team.</p>
 <pre><code>oc login --username=ocadmin --password=ibmocp46 --insecure-skip-tls-verify=true --server=https://api.ocp.ibm.edu:6443
 </code></pre>
 <p><img alt="oc login" src="../lab1-media/media/image19.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Make sure that the project you are working on is <strong>websphere-automation</strong>:</p>
@@ -404,6 +364,7 @@ amongst the broader team.</p>
 <pre><code>cat /opt/IBM/WebSphere/metering-url.txt
 </code></pre>
 <p><img alt="" src="../lab1-media/media/image20.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Get the <strong>api-key</strong> that will be used to authenticate the WebSphere Application Server servers and Liberty servers during the registration process. Save it to a file named “/opt/IBM/WebSphere/api-key.txt”</p>
@@ -415,6 +376,7 @@ amongst the broader team.</p>
 <pre><code>cat /opt/IBM/WebSphere/api-key.txt
 </code></pre>
 <p><img alt="" src="../lab1-media/media/image21.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Finally, get the Server certificate that is used for SSL handshake     between the servers and IBM Automation, and save it to a file named “/opt/IBM/WebSphere/cacert.pem”</p>
@@ -438,6 +400,7 @@ amongst the broader team.</p>
 <pre><code>/opt/IBM/WebSphere/Liberty200012/bin/server create Liberty_200012_server
 </code></pre>
 <p><img alt="2012 server created" src="../lab1-media/media/image23.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:</p>
@@ -449,6 +412,7 @@ amongst the broader team.</p>
 <pre><code>/opt/IBM/WebSphere/Liberty200012/bin/server start Liberty_200012_server
 </code></pre>
 <p><img alt="starting server 200012" src="../lab1-media/media/image24.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Now, you need to update the DefaultKeyStore with the server certificate to trust the server for https connection:</p>
@@ -456,6 +420,7 @@ amongst the broader team.</p>
 <pre><code>keytool -import -trustcacerts -file /opt/IBM/WebSphere/cacert.pem -keystore /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/resources/security/key.p12 -storetype PKCS12 -storepass th1nkpassword -noprompt
 </code></pre>
 <p><img alt="certificate store" src="../lab1-media/media/image25.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p>Configure the usage metering in the new server. This is configured in the Liberty <strong>server.xml</strong> file.</p>
@@ -466,10 +431,12 @@ amongst the broader team.</p>
 <pre><code>&lt;feature&gt;usageMetering-1.0&lt;/feature\&gt;
 </code></pre>
 <p><img alt="" src="../lab1-media/media/image26.png" /></p>
+<p><br></p>
 <p>c.  In the server,xml file, add the <strong>usageMetering</strong> element below:</p>
 <pre><code>&lt;usageMetering url="&lt;metering-url&gt;" apiKey="&lt;api-key&gt;" sslRef="defaultSSL"\&gt;
 </code></pre>
 <p><img alt="usage metering 200012" src="../lab1-media/media/image27.png" /></p>
+<p><br></p>
 <p>d.  You need to replace the \&lt;<strong>metering-url</strong>> with the output of the following command. Open another terminal window, and run the cat command  below:</p>
 <pre><code>cat /opt/IBM/WebSphere/metering-url.txt
 </code></pre>
@@ -478,14 +445,17 @@ amongst the broader team.</p>
 <pre><code>cat /opt/IBM/WebSphere/api-key.txt
 </code></pre>
 <p><img alt="api key" src="../lab1-media/media/image29.png" /></p>
+<p><br></p>
 </li>
 <li>
 <p><strong>Save</strong> and <strong>Close</strong> the server.xml file.</p>
+<p><br></p>
 </li>
 <li>
 <p>In the WebSphere Automation UI, list the new Liberty server that was registered.</p>
 <p>a.  Back to the WebSphere Automation Dashboard on your browser, open the <strong>Servers</strong> view</p>
 <p><img alt="app runtimes servers" src="../lab1-media/media/image30.png" /></p>
+<p><br></p>
 <p>b.  Confirm that the Liberty server is registered to WebSphere Automation Application runtimes page.</p>
 </li>
 </ol>
@@ -893,13 +863,6 @@ information to prioritize which issues to address first.</p>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="../intro/" class="btn btn-neutral" title="Getting Started with IBM WebSphere Automation"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
@@ -921,8 +884,6 @@ information to prioritize which issues to address first.</p>
   <div class="rst-versions" role="note" style="cursor: pointer">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-      
-        <span><a href="../intro/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
