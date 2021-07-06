@@ -289,13 +289,14 @@ amongst the broader team.</p>
 <li>
 <p>On the <em>Student VM</em>, open a browser and enter the following URL
     (there is a WebSphere Automation link on bookmark toolbar):</p>
-<p><strong>Note:</strong> It takes about <strong>10-15 minutes</strong> for the environment to start and stabilize once it has started. If you encounter an error accessing the WebSphere Automation URL, please wait a few minutes and retry. </p>
+<p><strong>Note:</strong> It takes about <strong>10-15 minutes</strong> for the environment to start and stabilize once it has started. If you encounter "<strong>502 Gateway Error</strong>" accessing the WebSphere Automation URL, please wait a few minutes and retry. </p>
 <p><a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://cpd-websphere-automation.apps.ocp.ibm.edu</span></a></p>
 <p><img alt="opening browser" src="lab1-media/media/image10.png" /></p>
 <p><br></p>
 </li>
 <li>
 <p>On the login page, select the <strong>OpenShift authentication</strong> as the    authentication type.</p>
+<p><strong>Note:</strong> If using Firefox, enlarge the browser window until you see the graphics, as illustrated below. </p>
 <p><img alt="openshift authentication" src="lab1-media/media/image11.png" /></p>
 <p><strong>Note:</strong> If necessary, accept all the warnings and certificates.  Depending on your browser, you might have to scroll down to permit
  access.</p>
@@ -364,6 +365,7 @@ amongst the broader team.</p>
 <pre><code>su root
 </code></pre>
 <p>a. Enter the following password when prompted</p>
+<p><strong>Note:</strong> The first character in the password is numeric One (1)</p>
 <pre><code>1bm2021rhjb
 </code></pre>
 </li>
@@ -460,19 +462,10 @@ amongst the broader team.</p>
 <p><img alt="" src="lab1-media/media/image26.png" /></p>
 <p><br></p>
 <p>c.  In the server.xml file, add the <strong>usageMetering</strong> element below:</p>
-<pre><code>&lt;usageMetering url="&lt;metering-url&gt;" apiKey="&lt;api-key&gt;" sslRef="defaultSSL"/&gt;
+<pre><code>&lt;usageMetering url="${metering-url}" apiKey="${api-key}" sslRef="defaultSSL"/&gt;
 </code></pre>
 <p><br> </p>
-<p><img alt="usage metering 200012" src="lab1-media/media/image27.png" /></p>
-<p><br></p>
-<p>d.  You need to replace the \&lt;<strong>metering-url</strong>> with the output of the following command. Open another terminal window, and run the cat command  below:</p>
-<pre><code>cat /opt/IBM/WebSphere/metering-url.txt
-</code></pre>
-<p><img alt="metering url" src="lab1-media/media/image28.png" /></p>
-<p>e.  Replace <strong>\&lt;api-key></strong> above with the output of the following cat     command. Use the second terminal to run the cat command:</p>
-<pre><code>cat /opt/IBM/WebSphere/api-key.txt
-</code></pre>
-<p><img alt="api key" src="lab1-media/media/image29.png" /></p>
+<p><img alt="usage metering 200012" src="lab1-media/media/image27-a.png" /></p>
 <p><br></p>
 </li>
 <li>
@@ -480,8 +473,38 @@ amongst the broader team.</p>
 <p><br></p>
 </li>
 <li>
+<p>Create a <strong>bootstrap.properties</strong> file for the Liberty server that contains the variable values for  <strong>metering_url</strong> and <strong>api_key</strong> that are defined in the server.xml file</p>
+<pre><code>echo "metering-url=$(cat /opt/IBM/WebSphere/metering-url.txt)" &gt;&gt; /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+
+echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+</code></pre>
+</li>
+<li>
+<p>Use the <strong>cat</strong> command to view the contents of the <strong>bootstrap.properties</strong> file to ensure it has proper values assigned to the variables</p>
+<pre><code>cat /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+</code></pre>
+<p>The <strong>metering-url</strong> and <strong>api-key</strong> variables should have values as illustrated below. </p>
+<p><img alt="bootstrap properties" src="lab1-media/media/image29-a.png" /></p>
+<p><br> </p>
+</li>
+<li>
+<p>Restart the Liberty server so that it can be initialized with the bootstrap.properties file. </p>
+<p><strong>Note:</strong> Use the <strong>--clean</strong> option when starting the Liberty server, to clear any cached data. </p>
+<pre><code>/opt/IBM/WebSphere/Liberty200012/bin/server stop Liberty_200012_server
+
+/opt/IBM/WebSphere/Liberty200012/bin/server start Liberty_200012_server --clean
+</code></pre>
+</li>
+<li>
+<p>View the Liberty server “<strong>messages.log</strong>” file and find the message indicating that the server was registered to the metering service.  </p>
+<pre><code>tail /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/logs/messages.log
+</code></pre>
+<p><img alt="registered with metering service" src="lab1-media/media/image29-b.png" /></p>
+<p><br> </p>
+</li>
+<li>
 <p>In the WebSphere Automation UI, list the new Liberty server that was registered.</p>
-<p>a.  Back to the WebSphere Automation Dashboard on your browser, open the <strong>Servers</strong> view</p>
+<p>a. Back to the WebSphere Automation Dashboard on your browser, open the <strong>Servers</strong> view</p>
 <p><img alt="app runtimes servers" src="lab1-media/media/image30.png" /></p>
 <p><br></p>
 <p>b.  Confirm that the Liberty server is registered to WebSphere Automation Application runtimes page.</p>
@@ -1028,5 +1051,5 @@ information to prioritize which issues to address first.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-07-06 13:06:36
+Build Date UTC : 2021-07-06 21:38:10
 -->
