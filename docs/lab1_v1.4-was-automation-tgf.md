@@ -1,5 +1,4 @@
-<span id="_Toc75871557" class="anchor"></span>**Strengthen Operational
-Security with IBM WebSphere Automation**
+# Strengthen Operational Security with IBM WebSphere Automation
 
 ![banner](./lab1-media/media/image1.jpeg)
 
@@ -89,18 +88,9 @@ Otherwise, you will need to reserve an environment for the lab. You can obtain o
 
 |         |           |  
 | ------------- |:-------------|
-| ![](/lab1-media/media/image4.png?cropResize=50,50)   | <strong>TIP:</strong> <br> If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.|
+| ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>TIP:</strong> <br> If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.|
 
 
-<table>
-<tbody>
-<tr  class="odd">
-<td><img src="./lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
-<td><p><strong>TIP:</strong></p>
-<p>If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.</p></td>
-</tr>
-</tbody>
-</table>
 
 1.  When the demo environment is provisioned, use the provided username and password to access and start the environment. You should see the following screen:
 
@@ -167,7 +157,9 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 1.  On the *Student VM*, open a browser and enter the following URL
     (there is a WebSphere Automation link on bookmark toolbar):
 
-    <a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://cpd-websphere-automation.apps.ocp.ibm.edu</span></a>
+    **Note:** It takes about **10-15 minutes** for the environment to start and stabilize once it has started. If you encounter "**502 Gateway Error**" accessing the WebSphere Automation URL, please wait a few minutes and retry. 
+    
+	<a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://cpd-websphere-automation.apps.ocp.ibm.edu</span></a>
 
 
     ![opening browser](./lab1-media/media/image10.png)
@@ -175,6 +167,8 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 	<br>
 
 2.  On the login page, select the **OpenShift authentication** as the    authentication type.
+
+    **Note:** If using Firefox, enlarge the browser window until you see the graphics, as illustrated below. 
 
      ![openshift authentication](./lab1-media/media/image11.png)
  
@@ -242,7 +236,8 @@ To register your application servers with the usage metering service in WebSpher
 
   - **Usage metering certificate**: The certificate that contains the public key. This key allows an application server that is registering with WebSphere Automation to do an SSL handshake with the metering service.
 
-In this section, you will get these configuration parameters. Let’s start it\!
+In this section, you will get these configuration parameters. Let’s start it!
+
 
 1.  Return to the desktop and open a new **terminal** window.
 
@@ -255,6 +250,8 @@ In this section, you will get these configuration parameters. Let’s start it\!
         su root
 
     a. Enter the following password when prompted
+
+    **Note:** The first character in the password is numeric One (1)
 
         1bm2021rhjb
 
@@ -296,7 +293,7 @@ In this section, you will get these configuration parameters. Let’s start it\!
 
 9.  Finally, get the Server certificate that is used for SSL handshake     between the servers and IBM Automation, and save it to a file named “/opt/IBM/WebSphere/cacert.pem”
 
-        oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\\.crt}' | base64 -d > /opt/IBM/WebSphere/cacert.pem
+        oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\.crt}' | base64 -d > /opt/IBM/WebSphere/cacert.pem
 
 10. View the contents of the saved file to ensure the api-key (token) was captured.
 
@@ -323,6 +320,10 @@ In this section, you configure Liberty Server version 20.0.0.12 to register to W
 2.  Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:
 
         cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
+
+    a. If promted to overwite the file, enter"**y**" for yes.
+	
+	  <br>
 
 3.  Start the Liberty server:
 
@@ -351,38 +352,57 @@ In this section, you configure Liberty Server version 20.0.0.12 to register to W
 
     b.  Add the **usageMetering-1.0** feature to the existing features in the <featureManager\> element, as illustrated below:
 
-        <feature>usageMetering-1.0</feature\>
+        <feature>usageMetering-1.0</feature>
 		
 	
     ![](./lab1-media/media/image26.png)
 	
 	<br>
 
-    c.  In the server,xml file, add the **usageMetering** element below:
+    c.  In the server.xml file, add the **usageMetering** element below:
 
-        <usageMetering url="<metering-url>" apiKey="<api-key>" sslRef="defaultSSL"\>
-
-    ![usage metering 200012](./lab1-media/media/image27.png)
-	
-	<br>
-
-    d.  You need to replace the \<**metering-url**\> with the output of the following command. Open another terminal window, and run the cat command  below:
-
-        cat /opt/IBM/WebSphere/metering-url.txt
-
-     ![metering url](./lab1-media/media/image28.png)
-
-    e.  Replace **\<api-key\>** above with the output of the following cat     command. Use the second terminal to run the cat command:
-
-        cat /opt/IBM/WebSphere/api-key.txt
-
-    ![api key](./lab1-media/media/image29.png)
+        <usageMetering url="${metering-url}" apiKey="${api-key}" sslRef="defaultSSL"/>
+      	    	
+     <br> 
+		
+	![usage metering 200012](./lab1-media/media/image27-a.png)
 	
 	<br>
 
 6.  **Save** and **Close** the server.xml file.
 
     <br>
+
+7. Create a **bootstrap.properties** file for the Liberty server that contains the variable values for  **metering_url** and **api_key** that are defined in the server.xml file
+
+        echo "metering-url=$(cat /opt/IBM/WebSphere/metering-url.txt)" >> /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+
+
+        echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" >> /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+
+
+8.	Use the **cat** command to view the contents of the **bootstrap.properties** file to ensure it has proper values assigned to the variables
+
+        cat /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/bootstrap.properties
+
+    The **metering-url** and **api-key** variables should have values as illustrated below. 
+
+    ![bootstrap properties](./lab1-media/media/image29-a.png)
+
+
+9.	Restart the Liberty server so that it can be initialized with the bootstrap.properties file. 
+
+    **Note:** Use the **--clean** option when starting the Liberty server, to clear any cached data. 
+
+        /opt/IBM/WebSphere/Liberty200012/bin/server stop Liberty_200012_server
+
+        /opt/IBM/WebSphere/Liberty200012/bin/server start Liberty_200012_server --clean
+
+10.	View the Liberty server “**messages.log**” file and find the message indicating that the server was registered to the metering service.  
+
+        tail /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/logs/messages.log
+
+    ![registered with metering service](./lab1-media/media/image29-b.png)
 
 7.  In the WebSphere Automation UI, list the new Liberty server that was registered.
     
@@ -394,10 +414,17 @@ In this section, you configure Liberty Server version 20.0.0.12 to register to W
 
     b.  Confirm that the Liberty server is registered to WebSphere Automation Application runtimes page.
 
+
+|         |           |  
+| ------------- |:-------------|
+| ![](./lab1-media/media/image31.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br> If the IBM Automation UI does not automatically detect the Liberty server that you registered, then it is extremely likely that the server.xml file has not been configured correctly. <br><br> - Review the <strong>server.xml</strong> configuration. <br><br> - Ensure the <strong>usageMetering-1.0</strong> feature is included in the list of features. <br><br> - Ensure the usageMetering <strong>url</strong> is CORRECT. No additional characters or spaces. <br><br> - Ensure the usageMetering <strong>apiKey</strong> is CORRECT. No additional characters or spaces. <br><br> - Ensure the usageMetering parameters that you modified are surrounded by **double-quotes**.
+
+
+<!--
 <table>
 <tbody>
 <tr class="odd">
-<td><img src="./lab1-media/media/image31.png" style="width:1.73958in;height:0.6875in" alt="sign-caution" /></td>
+<td><img src="/lab1-media/media/image31.png" style="width:1.73958in;height:0.6875in" alt="sign-caution" /></td>
 <td><p><strong>IMPORTANT:</strong></p>
 <p>If the IBM Automation UI does not automatically detect the Liberty server that you registered, then it is extremely likely that the server.xml file has not been configured correctly.</p>
 <ul>
@@ -410,16 +437,23 @@ In this section, you configure Liberty Server version 20.0.0.12 to register to W
 </tr>
 </tbody>
 </table>
+-->
 
 If the Liberty server was successfully registered, it is displayed in the Application Runtimes in IBM automation UI.
 
 ![dashboard server 1](./lab1-media/media/image32.png)
 
+|         |           |  
+| ------------- |:-------------|
+| ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>TIP:</strong> <br><br><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.
+
+   
+<!--
 <table>
 <tbody>
 <tr class="odd">
 <td>
-<p><img src="./lab1-media/media/image4.png" style="width:0.60417in;height:0.60417in" alt="sign-info" /></p>
+<p><img src="/lab1-media/media/image4.png" style="width:0.60417in;height:0.60417in" alt="sign-info" /></p>
 </td>
 <td><p><strong>TIP:</strong></p>
 <p>Maybe your server vulnerability is a little bit different than illustrated above.</p>
@@ -427,7 +461,7 @@ If the Liberty server was successfully registered, it is displayed in the Applic
 </tr>
 </tbody>
 </table>
-
+-->
 ## Configuring Liberty Server v20.0.0.9
 
 In this section, you configure another Liberty Server to your WebSphere Automation dashboard. The process is the same (using the usage metering service in WebSphere Automation). However, to simplify the lab, we have pre-created the configuration files to make the configuration simpler.
@@ -436,6 +470,8 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 
     **Tip:** You can run the “**whoami**” command in the terminal window to determine the currently logged in user.
 
+    <br> 
+   
 2.  First, you need to create the Liberty server version 20.0.0.9, using the command below:
 
         /opt/IBM/WebSphere/Liberty20009/bin/server create Liberty_20009_server
@@ -445,6 +481,10 @@ In this section, you configure another Liberty Server to your WebSphere Automati
     a.  Copy the **tls configuration** that we provided, to the new Liberty server configuration.
 
         cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
+		
+	b. If promted to overwite the file, enter"**y**" for yes.
+	
+	  <br>
 
 4.  Start the Liberty server:
 
@@ -457,12 +497,18 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 6.  Copy the server.xml that contains the usageMetering feature and properties (url, api-key):
 
         cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
+		
+	a. If promted to overwite the file, enter"**y**" for yes.
+	
+	  <br>
 
 7.  Back to the WebSphere Automation dashboard, confirm that the 2<sup>nd</sup> Liberty server is registered.
 
     ![dashboard server2](./lab1-media/media/image33.png)
  
     The dashboard shows that this server is vulnerable for some CVEs
+	
+	<br>
 
 8.  Click on the “**+1 more**” under the Unresolved CVEs for the Liberty\_20009\_server, to see the list of the unresolved CVEs, including the CVE-2020-10693.
 
@@ -476,16 +522,23 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 
     b. Check your email that you registered with IBM automation. A mail notification was sent indicating the vulnerability.
 
+
+|         |           |  
+| ------------- |:-------------|
+| ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>Infromation:</strong> <br><br>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. <br><br>However, Because of network restrictions in the lab environment, this link will not work.
+
+<!--
 <table>
 <tbody>
 <tr class="odd">
-<td><img src="./lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
+<td><img src="/lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
 <td><p><strong>Information:</strong></p>
 <p>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability.</p>
 <p>However, Because of network restrictions in the lab environment, this link will not work.</p></td>
 </tr>
 </tbody>
 </table>
+-->
 
   ![](./lab1-media/media/image36.png)
 
@@ -501,6 +554,8 @@ service.
         /opt/IBM/WebSphere/AppServer9056/bin/startServer.sh tWAS_9056_server
 
     ![](./lab1-media/media/image37.png)
+	
+	<br>
 
 2.  Configure usage-metering using the wsadmin script below:
 
@@ -511,6 +566,8 @@ service.
     The script should run successfully as illustrated below.
 
     ![](./lab1-media/media/image38.png)
+	
+	<br>
 
 3.  Great, you first traditional WAS server is configured. Let’s check our WebSphere Automation dashboard. Back to the browser, dashboard, confirm that the tWAS v9.0.5.6 is registered.
 
@@ -519,15 +576,21 @@ service.
     You should see that this server is vulnerable to 14 or more CVEs. 
 
 
-<table>
-<tbody>
-<tr class="odd">
-<td><img src="./lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
-<td><p><strong>TIP:</strong></p>
-<p><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.</p></td>
-</tr>
-</tbody>
-</table>
+	|         |           |  
+    | ------------- |:-------------|
+    | ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>TIP:</strong> <br><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.
+
+<!--
+	<table>
+	<tbody>
+	<tr class="odd">
+	<td><img src="/lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
+	<td><p><strong>TIP:</strong></p>
+	<p><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.</p></td>
+	</tr>
+	</tbody>
+	</table>
+-->
 
 4.  Check your email. A mail notification was sent showing the vulnerability.
 
@@ -554,6 +617,8 @@ steps here are the same of the last section.
     You should see that this server is vulnerable to CVE-2021-26296.
 
     As explained before, maybe your server has more vulnerability than illustrated above, since new vulnerabilities are constantly discovered.
+
+    <br>
 
 4.  Again, check your email. A mail notification was sent showing the vulnerability.
 
@@ -590,11 +655,15 @@ by the CVE.
 
 2.  Comment out the **beanValidation-2.0** feature:
 
-        <!-- <feature>beanValidation-2.0</feature> --\>
+        <!-- <feature>beanValidation-2.0</feature> -->
 
     ![](./lab1-media/media/image43.png)
+	
+	<br>
 
 3.  **Save** and **close** the *server.xml* file.
+
+    <br>
 
 4.  Back to your browser, check that the Liberty 20.0.0.9 server does **NOT** show the **CVE-2020-10693** vulnerability. The update is picked up automatically.
 
@@ -617,12 +686,18 @@ vulnerability.
         <feature>beanValidation-2.0</feature> 
 
     ![](./lab1-media/media/image45.png)
+	
+	<br>
 
 3.  **Save** and **Close** the server.xml file.
+
+    <br>
 
 4.  Back to the browser, make sure the vulnerability shows up again.
 
     ![cve back](./lab1-media/media/image46.png)
+	
+	<br>
 
 5.  You need to **stop** the server before the iFIx can be applied. Return to the terminal window and run the command below to stop the Liberty2009 server.
 
@@ -635,6 +710,8 @@ vulnerability.
         /iFix/PH29942/imcl_ifix_install.sh 20009
 
     ![apply fix](./lab1-media/media/image47.png)
+	
+	<br>
 
 7. Great, the iFix was applied. Now, start the server again:
 
@@ -654,18 +731,24 @@ In this section, you will apply an iFix to the traditional WebSphere
     ![CVE 2021 26296](./lab1-media/media/image48.png)
 
     Now, you will fix it by applying the appropriate iFix.
+	
+	<br>	 
 
 2.  First, stop the server, wait until it has stopped:
 
         /opt/IBM/WebSphere/AppServer9057/bin/stopServer.sh tWAS_9057_server
 
     ![](./lab1-media/media/image49.png)
+	
+	<br>
 
 3.  Run the following script to install the iFix:
 
         /iFix/PH34711/imcl_ifix_install.sh 9057
 
     ![](./lab1-media/media/image50.png)
+	
+	<br>
 
 4.  Start the server once the iFIX installation has completed:
 
@@ -723,10 +806,16 @@ To learn more about IBM WebSphere Automation, visit
 
 # **Appendix 1: Reserve an environment for the lab**
 
+
+|         |           |  
+| ------------- |:-------------|
+| ![](./lab1-media/media/image31.png?cropResize=50,50)   | <strong>IMPORTANT:</strong> <br><br>Reserving an environment ONLY applies if you are performing this lab as self-paced outside of an instructor led virtual lab. <br><br>A Skytap cloud lab environment is required for performing the lab. <br><br>In <strong>self-paced mode</strong>, you are required to request an environment using the instructions provided below. <br><br>Otherwise, in an <strong>instructor led</strong> lab, the lab instructor will provide access to pre-provisioned lab environment.
+
+<!--
 <table>
 <tbody>
 <tr class="odd">
-<td><img src="./lab1-media/media/image31.png" style="width:0.90417in;height:0.60417in" alt="sign-caution" /></td>
+<td><img src="/lab1-media/media/image31.png" style="width:0.90417in;height:0.60417in" alt="sign-caution" /></td>
 <td><p><strong>IMPORTANT!</strong></p>
 <p>Reserving an environment ONLY applies if you are performing this lab as self-paced outside of an instructor led virtual lab.</p>
 <p>A Skytap cloud lab environment is required for performing the lab.</p>
@@ -735,6 +824,7 @@ To learn more about IBM WebSphere Automation, visit
 </tr>
 </tbody>
 </table>
+-->
 
 1.  Use the link below to access the WebSphere Foundation Bootcamp
 
@@ -745,6 +835,8 @@ To learn more about IBM WebSphere Automation, visit
     b.  The **Create a reservation** page is displayed
 
      ![](./lab1-media/media/image52.png)
+	 
+	 <br>
 
 2.  Select “**Reserve for Now**” Radio button, and then follow the
     on-screen dialog to reserve an environment in a Skytap data center
@@ -771,8 +863,12 @@ To learn more about IBM WebSphere Automation, visit
     geography (US, EMEA, Asia Pacific)
 
     ![](./lab1-media/media/image54.png)
+	
+	<br>
 
 4.  One complete, click on the “**Submit**” Button
+
+    <br>
 
 5.  The reservation takes a moment to be created. When it is created,
     click on the “**My reservations**”
@@ -786,8 +882,12 @@ To learn more about IBM WebSphere Automation, visit
     page.
 
     ![](./lab1-media/media/image57.png)
+	
+	<br>
 
 7.  Click the “**Open Your Skytap Environment**” link.
+
+    <br>
 
 8.  Enter the **Desktop Password** for the VM access, that was generated
     for your environment. Click **Submit** button.

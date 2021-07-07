@@ -1,7 +1,5 @@
-site_name: IBM WebSphere Automation
+site_name: IBM WebSphere Automation Lab
 nav:
-  - Home: index.md
-  - Getting Started with IBM WebSphere Automation: intro.md
-  - Hand-on Lab: lab1_v1.2-was-automation-tgf.md
+  - Hand-on Lab: index.md
 theme: readthedocs
 extra_css: ["extra.css"]
