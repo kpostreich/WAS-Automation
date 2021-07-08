@@ -202,7 +202,7 @@ For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have 
 	
 	<br>
 
-7.  Before you start to register servers to the Dashboard, you need to configure an email to received notifications abouts CVEs.
+7.  Before you start to register servers to the Dashboard, you need to configure an email to received notifications about CVEs.
     
     a.  Open the **Notification configuration** tab.
 
@@ -316,9 +316,7 @@ In this section, you configure Liberty Server version 20.0.0.12 to register to W
 
 2.  Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:
 
-        cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
-
-    a. If promted to overwite the file, enter "**y**" for yes.
+        \cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
 	<br>
 
 3.  Start the Liberty server:
@@ -470,12 +468,10 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 
 3.  Since you have already configured **usageMetering** feature for Liberty version 20.0.0.12, we have a provided couple of server.xml files to make the configuration simpler.
     
-    a.  Copy the **tls configuration** that we provided, to the new Liberty server configuration.
+    Copy the **tls configuration** that we provided, to the new Liberty server configuration.
 
-        cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
+        \cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
 		
-	b. If promted to overwite the file, enter"**y**" for yes.
-	
 	  <br>
 
 4.  Start the Liberty server:
@@ -488,9 +484,7 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 
 6.  Copy the server.xml that contains the usageMetering feature and properties (url, api-key):
 
-        cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
-		
-	a. If promted to overwite the file, enter"**y**" for yes.
+        \cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
 	
 	  <br>
 
@@ -517,7 +511,7 @@ In this section, you configure another Liberty Server to your WebSphere Automati
 
 |         |           |  
 | ------------- |:-------------|
-| ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>Infromation:</strong> <br><br>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. <br><br>However, Because of network restrictions in the lab environment, this link will not work.
+| ![](./lab1-media/media/image4.png?cropResize=50,50)   | <strong>Information:</strong> <br><br>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. <br><br>However, Because of network restrictions in the lab environment, this link will not work.
 
 <!--
 <table>
@@ -551,7 +545,7 @@ service.
 
 2.  Configure usage-metering using the wsadmin script below:
 
-    The wsadmin command invokes a Pythin script named configuretWasUsageMetering.py. The script requires the same **url** and **apiKey** that you gathered earlier from the IBM automation environment. These parameters are captured from the text files that you saved earlier in the lab and inserted into the url and apiKey parameters.
+    The wsadmin command invokes a Python script named configuretWasUsageMetering.py. The script requires the same **url** and **apiKey** that you gathered earlier from the IBM automation environment. These parameters are captured from the text files that you saved earlier in the lab and inserted into the url and apiKey parameters.
 
         /opt/IBM/WebSphere/AppServer9056/bin/wsadmin.sh -f /api-usagemetering/scripts/configuretWasUsageMetering.py url=$(cat /opt/IBM/WebSphere/metering-url.txt) apiKey=$(cat /opt/IBM/WebSphere/api-key.txt) trustStorePassword=th1nkpassword
 
@@ -667,7 +661,7 @@ by the CVE.
  
     Great, you removed the vulnerability by updating the configuration.
 
-### Resolve the issue By Applying an IFix
+### Resolve the issue By Applying an iFix
 
 However, instead of removing the beanValidationFeature-2.0, the correct
 process is to apply the appropriate iFix to get rid of the
