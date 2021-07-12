@@ -2,7 +2,7 @@
 
 ![banner](./lab1-media/media/image1.jpeg)
 
-**Author(s):** Tien-Thanh Le, Ajay Apte, Jagadeeswar R Gangaraju,
+**Author(s):** Tien-Thanh Le, Ajay Reddy, Brian Hanczaryk, Jagadeeswar R Gangaraju,
 Yee-Kang Chang, Rafael Osorio
 
 **Last updated:** July 2021
