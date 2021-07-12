@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Strengthen Operational Security with IBM WebSphere Automation";
-    var mkdocs_page_input_path = "index.BAK.md";
+    var mkdocs_page_input_path = "index - Copy.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -90,7 +90,7 @@
 <p><img alt="banner" src="../lab1-media/media/image1.jpeg" /></p>
 <p><strong>Author(s):</strong> Tien-Thanh Le, Ajay Apte, Jagadeeswar R Gangaraju,
 Yee-Kang Chang, Rafael Osorio</p>
-<p><strong>Last updated:</strong> June 2021</p>
+<p><strong>Last updated:</strong> July 2021</p>
 <p><strong>Duration:</strong> 45 mins</p>
 <p>Need support? Contact <strong>Rafael Osorio</strong> and <strong>Kevin Postreich</strong></p>
 <h2 id="introduction-to-websphere-automation">Introduction to WebSphere Automation</h2>
@@ -138,10 +138,9 @@ Yee-Kang Chang, Rafael Osorio</p>
 <p>You update the WAS inventory (Spreadsheet) and provide up-to-date    reports to audit and compliance teams</p>
 </li>
 </ol>
-<p>Now, your inventory is a spreadsheet, with all the information about your servers, which versions, which operational system, which iFixes were applied, etc.</p>
+<p>As is, your inventory is a spreadsheet, containing all information about your servers, such as the versions of the installed servers, which operating system they're installed on, and iFixes which have been applied, etc</p>
 <p><img alt="" src="../lab1-media/media/image2.png" /></p>
-<p>This is a very manual process and you are trying to automate it. This is
-where <strong>IBM WebSphere Automation</strong> will help!</p>
+<p>Currently, this is a very manual, time-consuming process, and you'd like to automate this process to direct valuable time and resource elsewhere. This is where <strong>IBM WebSphere Automation</strong> will help!</p>
 <p>You would like to have:</p>
 <ul>
 <li>
@@ -158,12 +157,11 @@ where <strong>IBM WebSphere Automation</strong> will help!</p>
 </li>
 </ul>
 <p>In this lab, you use the IBM WebSphere Automation to secure operations to reduce risk and meet compliance.</p>
-<p>At the end of this lab, you will be able to connect teams with the most relevant information through a single dashboard to discover, analyze and remediate common vulnerabilities and exposures across instances. Furthermore, this information can be exported to a CSV file to be shared
-amongst the broader team.</p>
+<p>At the end of this lab, you will be able to connect teams with the most relevant information through a single dashboard. This enables you to discover, analyze and remediate common vulnerabilities and exposures across instances. Furthermore, this information can be exported to a CSV file to be shared amongst the broader team. </p>
 <p><img alt="" src="../lab1-media/media/image3.png" /></p>
 <h2 id="accessing-and-starting-the-environment">Accessing and starting the environment</h2>
-<p>If you are doing this lab as part of an instructor led workshop (virtual or face to face), an environment has already been provisioned for you. The instructor will provide the details for accessing the lab environment,</p>
-<p>Otherwise, you will need to reserve an environment for the lab. You can obtain one here. Follow the on-screen instructions for “<strong>Reserve now</strong>” option.</p>
+<p>If you are doing this lab as part of an instructor led workshop (virtual or face to face), an environment has already been provisioned for you. The instructor will provide the details for accessing the lab environment.</p>
+<p>Otherwise, you will need to reserve an environment for the lab. You can obtain one here. Follow the on-screen instructions for the “<strong>Reserve now</strong>” option.</p>
 <p><a href="https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575">https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575</a></p>
 <table>
 <thead>
@@ -275,7 +273,7 @@ amongst the broader team.</p>
 <p><br></p>
 </li>
 <li>
-<p>The Application runtimes page appears. There should be no data since no webSphere servers are registered/configured yet.</p>
+<p>The Application runtimes page appears. There should be no data since no WebSphere servers are registered/configured yet.</p>
 <p><img alt="app runtime" src="../lab1-media/media/image15.png" /></p>
 <p><br></p>
 </li>
@@ -295,14 +293,14 @@ amongst the broader team.</p>
 <p><strong>Great!</strong> Your email is configured to receive security notifications.</p>
 <p>In the next section, you will register servers to WebSphere Automation.</p>
 <h2 id="getting-configuration-parameters">Getting configuration parameters</h2>
-<p>Add each of your WebSphere Application Server servers and WebSphere Liberty servers to WebSphere Automation by registering them with the <strong>usage metering</strong> service.</p>
+<p>Add each of your WebSphere Application Server and WebSphere Liberty servers to WebSphere Automation by registering them with the <strong>usage metering</strong> service.</p>
 <p>To register your application servers with the usage metering service in WebSphere Automation, you must configure the usage metering feature in each application server. To configure the usage metering feature in each of your application servers, you must obtain the following usage metering details:</p>
 <ul>
 <li>
-<p><strong>URL</strong>: The URL of the usage metering service in WebSphere Automation. This service registers WebSphere Application Server servers and Liberty servers with WebSphere Automation so that you can track security vulnerabilities.</p>
+<p><strong>URL</strong>: The URL of the usage metering service in WebSphere Automation. This service registers WebSphere Application Server and Liberty servers with WebSphere Automation so that you can track security vulnerabilities.</p>
 </li>
 <li>
-<p><strong>API Key</strong>: The token used to authenticate the WebSphere Application Server servers and Liberty servers during the registration process.</p>
+<p><strong>API Key</strong>: The token used to authenticate the WebSphere Application Server and Liberty servers during the registration process.</p>
 </li>
 <li>
 <p><strong>Usage metering certificate</strong>: The certificate that contains the public key. This key allows an application server that is registering with WebSphere Automation to do an SSL handshake with the metering service.</p>
@@ -349,7 +347,7 @@ amongst the broader team.</p>
 <p><br></p>
 </li>
 <li>
-<p>Get the <strong>api-key</strong> that will be used to authenticate the WebSphere Application Server servers and Liberty servers during the registration process. Save it to a file named “/opt/IBM/WebSphere/api-key.txt”</p>
+<p>Get the <strong>api-key</strong> that will be used to authenticate the WebSphere Application Server and Liberty servers during the registration process. Save it to a file named “/opt/IBM/WebSphere/api-key.txt”</p>
 <pre><code>oc -n websphere-automation get secret automation-secure-metering-apis-encrypted-tokens -o jsonpath='{.data.automation-secure-metering-apis-sa}' | base64 -d &gt; /opt/IBM/WebSphere/api-key.txt; echo &gt;&gt; /opt/IBM/WebSphere/api-key.txt
 </code></pre>
 </li>
@@ -361,7 +359,7 @@ amongst the broader team.</p>
 <p><br></p>
 </li>
 <li>
-<p>Finally, get the Server certificate that is used for SSL handshake     between the servers and IBM Automation, and save it to a file named “/opt/IBM/WebSphere/cacert.pem”</p>
+<p>Finally, get the Server certificate that is used for SSL handshake between the servers and IBM Automation, and save it to a file named “/opt/IBM/WebSphere/cacert.pem”</p>
 <pre><code>oc get secret external-tls-secret -n websphere-automation -o jsonpath='{.data.cert\.crt}' | base64 -d &gt; /opt/IBM/WebSphere/cacert.pem
 </code></pre>
 </li>
@@ -381,30 +379,28 @@ amongst the broader team.</p>
 <p>Create a new Liberty server, version 20.0.0.12, using the command below:</p>
 <pre><code>/opt/IBM/WebSphere/Liberty200012/bin/server create Liberty_200012_server
 </code></pre>
-<p><img alt="2012 server created" src="../lab1-media/media/image23.png" /></p>
-<p><br></p>
+<p><img alt="2012 server created" src="../lab1-media/media/image23.png" />
+<br></p>
 </li>
 <li>
 <p>Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:</p>
 <pre><code>cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
 </code></pre>
-<p>a. If promted to overwite the file, enter"<strong>y</strong>" for yes.</p>
-<p><br></p>
+<p>a. If promted to overwite the file, enter "<strong>y</strong>" for yes.
+<br></p>
 </li>
 <li>
 <p>Start the Liberty server:</p>
 <pre><code>/opt/IBM/WebSphere/Liberty200012/bin/server start Liberty_200012_server
 </code></pre>
-<p><img alt="starting server 200012" src="../lab1-media/media/image24.png" /></p>
-<p><br></p>
-</li>
-<li>
-<p>Now, you need to update the DefaultKeyStore with the server certificate to trust the server for https connection:</p>
+<p><img alt="starting server 200012" src="../lab1-media/media/image24.png" />
+  <br>
+  4.  Now, you need to update the DefaultKeyStore with the server certificate to trust the server for https connection:</p>
 <p>The command below will import the “<strong>cacert.pem</strong>” file, that you saved in a previous step, into the Liberty trust store, thereby trusting the server for secure HTTPS connections from IBM Automation.</p>
 <pre><code>keytool -import -trustcacerts -file /opt/IBM/WebSphere/cacert.pem -keystore /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/resources/security/key.p12 -storetype PKCS12 -storepass th1nkpassword -noprompt
 </code></pre>
-<p><img alt="certificate store" src="../lab1-media/media/image25.png" /></p>
-<p><br></p>
+<p><img alt="certificate store" src="../lab1-media/media/image25.png" />
+<br></p>
 </li>
 <li>
 <p>Configure the usage metering in the new server. This is configured in the Liberty <strong>server.xml</strong> file.</p>
@@ -414,12 +410,11 @@ amongst the broader team.</p>
 <p>b.  Add the <strong>usageMetering-1.0</strong> feature to the existing features in the &lt;featureManager> element, as illustrated below:</p>
 <pre><code>&lt;feature&gt;usageMetering-1.0&lt;/feature&gt;
 </code></pre>
-<p><img alt="" src="../lab1-media/media/image26.png" /></p>
-<p><br></p>
+<p><img alt="" src="../lab1-media/media/image26.png" />
+<br></p>
 <p>c.  In the server.xml file, add the <strong>usageMetering</strong> element below:</p>
 <pre><code>&lt;usageMetering url="${metering-url}" apiKey="${api-key}" sslRef="defaultSSL"/&gt;
 </code></pre>
-<p><br> </p>
 <p><img alt="usage metering 200012" src="../lab1-media/media/image27-a.png" /></p>
 <p><br></p>
 </li>
@@ -458,11 +453,10 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 <p><br> </p>
 </li>
 <li>
-<p>In the WebSphere Automation UI, list the new Liberty server that was registered.</p>
-<p>a. Back to the WebSphere Automation Dashboard on your browser, open the <strong>Servers</strong> view</p>
+<p>In the WebSphere Automation UI, navigate to the <strong>Servers</strong> tab, to view the list of registered servers. The new Liberty server should be registered</p>
 <p><img alt="app runtimes servers" src="../lab1-media/media/image30.png" /></p>
 <p><br></p>
-<p>b.  Confirm that the Liberty server is registered to WebSphere Automation Application runtimes page.</p>
+<p>a.  Confirm that the Liberty server is registered in the WebSphere Automation Application runtimes page, as illustrated below. </p>
 </li>
 </ol>
 <table>
@@ -475,7 +469,7 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 <tbody>
 <tr>
 <td><img alt="" src="../lab1-media/media/image31.png?cropResize=50,50" /></td>
-<td align="left"><strong>IMPORTANT:</strong> <br><br> If the IBM Automation UI does not automatically detect the Liberty server that you registered, then it is extremely likely that the server.xml file has not been configured correctly. <br><br> 1. Review the <strong>server.xml</strong> configuration. <br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the <strong>usageMetering-1.0</strong> feature is included in the list of features. <br><br> 2. Review the <strong>bootstrap.properties</strong> file<br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the usageMetering <strong>url</strong> is CORRECT. No additional characters or spaces. <br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the usageMetering <strong>apiKey</strong> is CORRECT. No additional characters or spaces.</td>
+<td align="left"><strong>IMPORTANT:</strong> <br><br> If the IBM Automation UI does not automatically detect the Liberty server that you registered, then it is extremely likely that the server.xml file or the bootstrap.properties file has not been configured correctly. <br><br> 1. Review the <strong>server.xml</strong> configuration. <br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the <strong>usageMetering-1.0</strong> feature is included in the list of features. <br><br> 2. Review the <strong>bootstrap.properties</strong> file<br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the usageMetering <strong>url</strong> is CORRECT. No additional characters or spaces. <br> &nbsp;&nbsp;&nbsp;&nbsp;- Ensure the usageMetering <strong>apiKey</strong> is CORRECT. No additional characters or spaces.</td>
 </tr>
 </tbody>
 </table>
@@ -610,7 +604,7 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 -->
 
 <p><img alt="" src="../lab1-media/media/image36.png" /></p>
-<h2 id="configuring-traditional-weebsphere-twas-v9056">Configuring traditional WeebSphere (tWAS) v9.0.5.6</h2>
+<h2 id="configuring-traditional-websphere-twas-v9056">Configuring traditional WebSphere (tWAS) v9.0.5.6</h2>
 <p>In this section, you configure a traditional WebSphere Application
 Server to your WebSphere Automation dashboard. With traditional
 WebSphere, you use the wsadmin script to configure the usage metering
@@ -631,9 +625,10 @@ service.</p>
 <p>The script should run successfully as illustrated below.</p>
 <p><img alt="" src="../lab1-media/media/image38.png" /></p>
 <p><br></p>
+<p>Great, you first traditional WAS server is configured. Let’s check the WebSphere Automation dashboard. </p>
 </li>
 <li>
-<p>Great, you first traditional WAS server is configured. Let’s check our WebSphere Automation dashboard. Back to the browser, dashboard, confirm that the tWAS v9.0.5.6 is registered.</p>
+<p>Go back to the browser, navigate to the <strong>Servers</strong> dashboard, and confirm that the tWAS v9.0.5.6 server was registered.</p>
 <p><img alt="dashboard tWAS1" src="../lab1-media/media/image39.png" /></p>
 <p>You should see that this server is vulnerable to 14 or more CVEs. </p>
 <table>
@@ -650,21 +645,19 @@ service.</p>
 </tr>
 </tbody>
 </table>
-</li>
-</ol>
+<p><br>
 <!--
-    <table>
-    <tbody>
-    <tr class="odd">
-    <td><img src="/lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
-    <td><p><strong>TIP:</strong></p>
-    <p><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.</p></td>
-    </tr>
-    </tbody>
-    </table>
--->
-
-<ol>
+<table>
+<tbody>
+<tr class="odd">
+<td><img src="/lab1-media/media/image4.png" style="width:0.960417in;height:0.60417in" alt="sign-info" /></td>
+<td><p><strong>TIP:</strong></p>
+<p><strong>Note:</strong> New vulnerabilities are discovered constantly, so the number of CVEs discovered may be different than illustrated.</p></td>
+</tr>
+</tbody>
+</table>
+--></p>
+</li>
 <li>
 <p>Check your email. A mail notification was sent showing the vulnerability.</p>
 <p><img alt="" src="../lab1-media/media/image40.png" /></p>
@@ -739,7 +732,7 @@ by the CVE.</p>
 <p>Great, you removed the vulnerability by updating the configuration.</p>
 </li>
 </ol>
-<h3 id="resolve-the-issue-by-applying-an-ifix">Resolve the issue By Applying an IFIX</h3>
+<h3 id="resolve-the-issue-by-applying-an-ifix">Resolve the issue By Applying an IFix</h3>
 <p>However, instead of removing the beanValidationFeature-2.0, the correct
 process is to apply the appropriate iFix to get rid of the
 vulnerability.</p>
@@ -766,7 +759,7 @@ vulnerability.</p>
 <p><br></p>
 </li>
 <li>
-<p>You need to <strong>stop</strong> the server before the iFIx can be applied. Return to the terminal window and run the command below to stop the Liberty2009 server.</p>
+<p>You need to <strong>stop</strong> the server before the iFix can be applied. Return to the terminal window and run the command below to stop the Liberty2009 server.</p>
 <pre><code>/opt/IBM/WebSphere/Liberty20009/bin/server stop Liberty_20009_server
 </code></pre>
 </li>
@@ -813,7 +806,7 @@ vulnerability.</p>
 <p><br></p>
 </li>
 <li>
-<p>Start the server once the iFIX installation has completed:</p>
+<p>Start the server once the iFix installation has completed:</p>
 <pre><code>/opt/IBM/WebSphere/AppServer9057/bin/startServer.sh tWAS_9057_server
 </code></pre>
 </li>
