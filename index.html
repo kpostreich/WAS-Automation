@@ -323,7 +323,7 @@ Yee-Kang Chang, Rafael Osorio</p>
 <p><br></p>
 </li>
 <li>
-<p>Before you start to register servers to the Dashboard, you need to configure an email to received notifications abouts CVEs.</p>
+<p>Before you start to register servers to the Dashboard, you need to configure an email to received notifications about CVEs.</p>
 <p>a.  Open the <strong>Notification configuration</strong> tab.</p>
 <p><img alt="notification config" src="lab1-media/media/image16.png" /></p>
 <p><br></p>
@@ -631,7 +631,7 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 <tbody>
 <tr>
 <td><img alt="" src="lab1-media/media/image4.png?cropResize=50,50" /></td>
-<td align="left"><strong>Infromation:</strong> <br><br>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. <br><br>However, Because of network restrictions in the lab environment, this link will not work.</td>
+<td align="left"><strong>Information:</strong> <br><br>In the email message, there will be a link that would redirect to the console to show more details on the vulnerability. <br><br>However, Because of network restrictions in the lab environment, this link will not work.</td>
 </tr>
 </tbody>
 </table>
@@ -664,7 +664,7 @@ service.</p>
 </li>
 <li>
 <p>Configure usage-metering using the wsadmin script below:</p>
-<p>The wsadmin command invokes a Pythin script named configuretWasUsageMetering.py. The script requires the same <strong>url</strong> and <strong>apiKey</strong> that you gathered earlier from the IBM automation environment. These parameters are captured from the text files that you saved earlier in the lab and inserted into the url and apiKey parameters.</p>
+<p>The wsadmin command invokes a Python script named configuretWasUsageMetering.py. The script requires the same <strong>url</strong> and <strong>apiKey</strong> that you gathered earlier from the IBM automation environment. These parameters are captured from the text files that you saved earlier in the lab and inserted into the url and apiKey parameters.</p>
 <pre><code>/opt/IBM/WebSphere/AppServer9056/bin/wsadmin.sh -f /api-usagemetering/scripts/configuretWasUsageMetering.py url=$(cat /opt/IBM/WebSphere/metering-url.txt) apiKey=$(cat /opt/IBM/WebSphere/api-key.txt) trustStorePassword=th1nkpassword
 </code></pre>
 <p>The script should run successfully as illustrated below.</p>
@@ -777,7 +777,7 @@ by the CVE.</p>
 <p>Great, you removed the vulnerability by updating the configuration.</p>
 </li>
 </ol>
-<h3 id="resolve-the-issue-by-applying-an-ifix">Resolve the issue By Applying an IFix</h3>
+<h3 id="resolve-the-issue-by-applying-an-ifix">Resolve the issue By Applying an iFix</h3>
 <p>However, instead of removing the beanValidationFeature-2.0, the correct
 process is to apply the appropriate iFix to get rid of the
 vulnerability.</p>
@@ -1045,5 +1045,5 @@ information to prioritize which issues to address first.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2021-07-12 13:23:01
+Build Date UTC : 2021-07-12 14:21:25
 -->
