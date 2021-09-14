@@ -139,8 +139,7 @@ WebSphere administrators can also view the results of vulnerability assessment i
 For this lab, WebSphere Automation is pre-installed on an OCP cluster. You have your individual WebSphere Automation installation. Let’s access your environment.
 
 1.  On the *Student VM*, open a browser and enter the following URL
-    (there is a WebSphere Automation link on bookmark toolbar):
-
+    
     **Note:** It takes about **10-15 minutes** for the environment to start and stabilize once it has started. If you encounter "**502 Gateway Error**" accessing the WebSphere Automation URL, please wait a few minutes and retry. 
     
 	<a href="https://icp-console.apps.demo.ibmdte.net/multicloud/welcome"><span class="underline">https://cpd-websphere-automation.apps.ocp.ibm.edu</span></a>

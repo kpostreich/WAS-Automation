@@ -19,7 +19,7 @@
   <script>
     // Current page data
     var mkdocs_page_name = "Strengthen Operational Security with IBM WebSphere Automation";
-    var mkdocs_page_input_path = "index - Copy (2).md";
+    var mkdocs_page_input_path = "index - Copy.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -159,23 +159,6 @@
 <p>At the end of this lab, you will be able to connect teams with the most relevant information through a single dashboard. This enables you to discover, analyze and remediate common vulnerabilities and exposures across instances. Furthermore, this information can be exported to a CSV file to be shared amongst the broader team. </p>
 <p><img alt="" src="../lab1-media/media/image3.png" /></p>
 <h2 id="accessing-and-starting-the-environment">Accessing and starting the environment</h2>
-<p>If you are doing this lab as part of an instructor led workshop (virtual or face to face), an environment has already been provisioned for you. The instructor will provide the details for accessing the lab environment.</p>
-<p>Otherwise, you will need to reserve an environment for the lab. You can obtain one here. Follow the on-screen instructions for the “<strong>Reserve now</strong>” option.</p>
-<p><a href="https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575">https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575</a></p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="" src="../lab1-media/media/image4.png?cropResize=50,50" /></td>
-<td align="left"><strong>TIP:</strong> <br> If you need additional details, the step by step instructions for reserving an environment can be found in <strong>APPENDIX 1</strong> of this lab guide.</td>
-</tr>
-</tbody>
-</table>
 <ol>
 <li>
 <p>When the demo environment is provisioned, use the provided username and password to access and start the environment. You should see the following screen:</p>
@@ -385,7 +368,7 @@
 <p>Now you need to configure the server to use TLS/SSL using the provided server_tls.xml file:</p>
 <pre><code>cp -f /home/ibmuser/Desktop/lab_backup/liberty200012/server_tls.xml /opt/IBM/WebSphere/Liberty200012/usr/servers/Liberty_200012_server/server.xml
 </code></pre>
-<p>a. If promted to overwite the file, enter "<strong>y</strong>" for yes.
+<p>a. If prompted to overwite the file, enter "<strong>y</strong>" for yes.
 <br></p>
 </li>
 <li>
@@ -540,7 +523,7 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 <p>a.  Copy the <strong>tls configuration</strong> that we provided, to the new Liberty server configuration.</p>
 <pre><code>cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_tls.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
 </code></pre>
-<p>b. If promted to overwite the file, enter"<strong>y</strong>" for yes.</p>
+<p>b. If prompted to overwite the file, enter"<strong>y</strong>" for yes.</p>
 <p><br></p>
 </li>
 <li>
@@ -557,7 +540,7 @@ echo "api-key=$(cat /opt/IBM/WebSphere/api-key.txt)" &gt;&gt; /opt/IBM/WebSphere
 <p>Copy the server.xml that contains the usageMetering feature and properties (url, api-key):</p>
 <pre><code>cp -f /home/ibmuser/Desktop/lab_backup/liberty20009/server_configured.xml /opt/IBM/WebSphere/Liberty20009/usr/servers/Liberty_20009_server/server.xml
 </code></pre>
-<p>a. If promted to overwite the file, enter"<strong>y</strong>" for yes.</p>
+<p>a. If prompted to overwite the file, enter"<strong>y</strong>" for yes.</p>
 <p><br></p>
 </li>
 <li>
@@ -858,108 +841,6 @@ run, visualize hotspots and bottlenecks, and use financial impact
 information to prioritize which issues to address first.</p>
 <p>To learn more about IBM WebSphere Automation, visit
 <a href="http://ibm.com/cloud/websphere-automation"><span class="underline">ibm.com/cloud/websphere-automation</span></a>.</p>
-<h1 id="appendix-1-reserve-an-environment-for-the-lab"><strong>Appendix 1: Reserve an environment for the lab</strong></h1>
-<table>
-<thead>
-<tr>
-<th></th>
-<th align="left"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img alt="" src="../lab1-media/media/image31.png?cropResize=50,50" /></td>
-<td align="left"><strong>IMPORTANT:</strong> <br><br>Reserving an environment ONLY applies if you are performing this lab as self-paced outside of an instructor led virtual lab. <br><br>A Skytap cloud lab environment is required for performing the lab. <br><br>In <strong>self-paced mode</strong>, you are required to request an environment using the instructions provided below. <br><br>Otherwise, in an <strong>instructor led</strong> lab, the lab instructor will provide access to pre-provisioned lab environment.</td>
-</tr>
-</tbody>
-</table>
-<!--
-<table>
-<tbody>
-<tr class="odd">
-<td><img src="/lab1-media/media/image31.png" style="width:0.90417in;height:0.60417in" alt="sign-caution" /></td>
-<td><p><strong>IMPORTANT!</strong></p>
-<p>Reserving an environment ONLY applies if you are performing this lab as self-paced outside of an instructor led virtual lab.</p>
-<p>A Skytap cloud lab environment is required for performing the lab.</p>
-<p>In <strong>self-paced mode</strong>, you are required to request an environment using the instructions provided below.</p>
-<p>Otherwise, in an <strong>instructor led</strong> lab, the lab instructor will provide access to pre-provisioned lab environment.</p></td>
-</tr>
-</tbody>
-</table>
--->
-
-<ol>
-<li>
-<p>Use the link below to access the WebSphere Foundation Bootcamp</p>
-<p><a href="https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575">https://techzone.ibm.com/my/reservations/create/60da2c20e2cb7a001f656575</a></p>
-<p>a.  Use your <strong>IBM ID</strong> to login to the IBM Technology Zone</p>
-<p>b.  The <strong>Create a reservation</strong> page is displayed</p>
-<p><img alt="" src="../lab1-media/media/image52.png" /></p>
-<p><br></p>
-</li>
-<li>
-<p>Select “<strong>Reserve for Now</strong>” Radio button, and then follow the
-    on-screen dialog to reserve an environment in a Skytap data center
-    in the closest Geography (US-Central, EMEA, Asia Pacific)</p>
-<p>a.  The environment <strong>name</strong> should be pre-filled with “<strong>WebSphere
-    Automation Environment – Skytap</strong>”</p>
-<p>b.  <strong>Purpose</strong>: Practice / Self-Education</p>
-<p>c.  <strong>Description</strong>: Enter a description. The field is required.</p>
-<p>d.  <strong>End date and time</strong>: Use the calendar widget and select the
-    maximum date available (2 weeks from date of reservation)</p>
-<p>e.  <strong>Select a time</strong>: Select a time of day for reservation to
-    expire</p>
-<p>f.  Select a <strong>timezone</strong> nearest to you</p>
-<p><img alt="" src="../lab1-media/media/image53.png" /></p>
-</li>
-<li>
-<p>Preferred Geography: Choose a Skytap datacenter in the closest
-    geography (US, EMEA, Asia Pacific)</p>
-<p><img alt="" src="../lab1-media/media/image54.png" /></p>
-<p><br></p>
-</li>
-<li>
-<p>One complete, click on the “<strong>Submit</strong>” Button</p>
-<p><br></p>
-</li>
-<li>
-<p>The reservation takes a moment to be created. When it is created,
-    click on the “<strong>My reservations</strong>”
-    <img alt="" src="../lab1-media/media/image55.png" /> button to see the detail so of
-    the environment reservation.</p>
-<p><strong>Note:</strong> The details of your environment reservation are displayed.</p>
-</li>
-<li>
-<p>Take not of the <strong>Username</strong> and <strong>Password</strong>. Then click the
-    <img alt="" src="../lab1-media/media/image56.png" /> icon to navigate to the Launch
-    page.</p>
-<p><img alt="" src="../lab1-media/media/image57.png" /></p>
-<p><br></p>
-</li>
-<li>
-<p>Click the “<strong>Open Your Skytap Environment</strong>” link.</p>
-<p><br></p>
-</li>
-<li>
-<p>Enter the <strong>Desktop Password</strong> for the VM access, that was generated
-    for your environment. Click <strong>Submit</strong> button.</p>
-<p><img alt="" src="../lab1-media/media/image58.png" /></p>
-</li>
-</ol>
-<h3 id="the-lab-environment"><strong>The lab environment</strong></h3>
-<p>Eight Linux VM has been provided for this lab.</p>
-<p><img alt="" src="../lab1-media/media/image59.png" /></p>
-<p>Note: The <strong>STUDENT</strong> VM is the VM you will login to and use in the lab.</p>
-<p><img alt="" src="../lab1-media/media/image60.png" /></p>
-<p>The login credentials for the <strong>STUDENT”</strong> image is:</p>
-<ul>
-<li>
-<p>User ID: <strong>ibmuser</strong></p>
-</li>
-<li>
-<p>Password: <strong>engageibm!</strong></p>
-</li>
-</ul>
               
             </div>
           </div>
